@@ -1,0 +1,18 @@
+﻿  Building 'fsfilter' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Stamping x64\Release\fsfilter.inf
+  Stamping [Version] section with DriverVer=09/17/2023,0.34.59.446
+  fsfilter.vcxproj -> C:\Users\Ali\Documents\GitHub\fsfilter\x64\Release\fsfilter.sys
+  .........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\Ali\Documents\GitHub\fsfilter\x64\Release\fsfilter\fsfilter.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\Ali\Documents\GitHub\fsfilter\x64\Release\fsfilter\fsfilter.cat
+  

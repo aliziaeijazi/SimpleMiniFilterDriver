@@ -1,0 +1,11 @@
+﻿  Building 'fsfilter' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\fsfilter.inf
+  Stamping [Version] section with DriverVer=09/15/2023,16.49.13.17
+  fsfilter.c
+fsfilter.obj : error LNK2019: unresolved external symbol FltRegisterFilter referenced in function DriverEntry
+fsfilter.obj : error LNK2019: unresolved external symbol FltUnregisterFilter referenced in function MiniUnload
+fsfilter.obj : error LNK2019: unresolved external symbol FltStartFiltering referenced in function DriverEntry
+fsfilter.obj : error LNK2019: unresolved external symbol FltGetFileNameInformation referenced in function MiniPreCreate
+fsfilter.obj : error LNK2019: unresolved external symbol FltReleaseFileNameInformation referenced in function MiniPreCreate
+fsfilter.obj : error LNK2019: unresolved external symbol FltParseFileNameInformation referenced in function MiniPreCreate
+C:\Users\Ali\Documents\GitHub\fsfilter\x64\Debug\fsfilter.sys : fatal error LNK1120: 6 unresolved externals

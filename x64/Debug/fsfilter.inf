@@ -1,0 +1,80 @@
+;
+; fsfilter.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=fsfilter.cat
+DriverVer = 09/15/2023,16.49.13.17
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+fsfilter_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+fsfilter.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%fsfilter.DeviceDesc%=fsfilter_Device, Root\fsfilter ; TODO: edit hw-id
+
+[fsfilter_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+fsfilter.sys
+
+;-------------- Service installation
+[fsfilter_Device.NT.Services]
+AddService = fsfilter,%SPSVCINST_ASSOCSERVICE%, fsfilter_Service_Inst
+
+; -------------- fsfilter driver install sections
+[fsfilter_Service_Inst]
+DisplayName    = %fsfilter.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\fsfilter.sys
+
+;
+;--- fsfilter_Device Coinstaller installation ------
+;
+
+[fsfilter_Device.NT.CoInstallers]
+AddReg=fsfilter_Device_CoInstaller_AddReg
+CopyFiles=fsfilter_Device_CoInstaller_CopyFiles
+
+[fsfilter_Device_CoInstaller_AddReg]
+;
+
+
+[fsfilter_Device_CoInstaller_CopyFiles]
+;
+
+
+[fsfilter_Device.NT.Wdf]
+KmdfService =  fsfilter, fsfilter_wdfsect
+[fsfilter_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "fsfilter Installation Disk"
+fsfilter.DeviceDesc = "fsfilter Device"
+fsfilter.SVCDESC = "fsfilter Service"
